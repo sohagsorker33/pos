@@ -4,8 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategorieController;
-
-
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +53,12 @@ Route::get('/profile-page',[UserController::class, 'ProfilePage'])->name('profil
 
 Route::get('/category-page',[CategorieController::class, 'CategoryPage'])->middleware([TokenVerificationMiddleware::class]);
 
+Route::get('/customer-page',[CustomerController::class, 'CustomerPage'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
+
+
 // Logout Route
 
 Route::get('/logout',[UserController::class, 'UserLogout'])->name('logout');
@@ -74,3 +79,17 @@ Route::post('/delete-category',[CategorieController::class, 'DeleteCategory'])->
 Route::post('/update-category',[CategorieController::class, 'UpdateCategory'])->middleware([TokenVerificationMiddleware::class]);
 
 Route::post('/category-by-id',[CategorieController::class, 'CategoryByID'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
+// Customer Web api route
+
+Route::post('/create-customer',[CustomerController::class, 'CustomerCreate'])->middleware([TokenVerificationMiddleware::class]);
+
+Route::get('/customer-list',[CustomerController::class, 'CustomerList'])->middleware([TokenVerificationMiddleware::class]);
+
+Route::post('/update-customer',[CustomerController::class, 'CustomerUpdate'])->middleware([TokenVerificationMiddleware::class]);
+
+Route::post('/delete-customer',[CustomerController::class, 'CustomerDelete'])->middleware([TokenVerificationMiddleware::class]);
+
+Route::post('/customer-by-id',[CustomerController::class, 'CustomerById'])->middleware([TokenVerificationMiddleware::class]);

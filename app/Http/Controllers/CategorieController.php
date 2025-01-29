@@ -28,6 +28,7 @@ class CategorieController extends Controller
        
     }
 
+
    public function DeleteCategory(Request $request){
       $category_id=$request->input('id');
        $user_id=$request->header('id');
@@ -37,21 +38,17 @@ class CategorieController extends Controller
   public function UpdateCategory(Request $request){
       $category_id=$request->input('id');
       $user_id=$request->header('id');
-    return Categorie::where('id','=',$category_id)->where('user_id','=',$user_id)->update([
+      return Categorie::where('id','=',$category_id)->where('user_id','=',$user_id)->update([
         'name'=>$request->input('name')
     ]);
    
   }
 
-  
-  function CategoryByID(Request $request){
+  public function CategoryByID(Request $request){
     $category_id=$request->input('id');
     $user_id=$request->header('id');
-    return Categorie::where('id',$category_id)->where('user_id',$user_id)->first();
-}
-
-
-
+    return Categorie::where('id',$category_id)->where('user_id',$user_id)->get();
+  }
 
 }
 
