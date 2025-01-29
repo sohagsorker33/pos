@@ -11,7 +11,7 @@
                             <div class="col-12 p-1">
                                 <label class="form-label">Category Name *</label>
                                 <input type="text" class="form-control" id="categoryNameUpdate">
-                                <input class="" id="updateID">
+                                <input class="d-none" id="updateID">
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,8 @@
     </div>
 </div>
 
-  <script>
+   <script>
+   
     async function FillUpUpdateForm(id){
         document.getElementById('updateID').value=id;
         showLoader();
@@ -46,11 +47,13 @@
             if(res.status===200  && res.data===1){
                 document.getElementById('update-form').reset();
                 successToast('Category Updated Successfully');
-                
                 await getList();
             }else{
                 errorToast('Category Updated Failed');
             }
         }
     }
-  </script>
+  </script> 
+
+
+ 

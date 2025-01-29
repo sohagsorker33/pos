@@ -47,7 +47,7 @@ class CategorieController extends Controller
   public function CategoryByID(Request $request){
     $category_id=$request->input('id');
     $user_id=$request->header('id');
-    return Categorie::where('id',$category_id)->where('user_id',$user_id)->get();
+    return Categorie::where('id',$category_id)->where('user_id',$user_id)->first();
   }
 
 }
