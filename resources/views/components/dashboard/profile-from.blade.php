@@ -103,6 +103,9 @@ if(firstName.length===0){
         if(res.status===200 && res.data['status']==='success'){
 
          successToast("User Update profile Successfully");
+         setTimeout(() => {
+               window.location.href='/dashboard-page';
+             },1000);
         }else{
 
             errorToast(res.data['message']);

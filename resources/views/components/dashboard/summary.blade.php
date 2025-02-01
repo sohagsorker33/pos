@@ -32,7 +32,7 @@
                                 <h5 class="mb-0 text-capitalize font-weight-bold">
                                     <span id="category"></span>
                                 </h5>
-                                <p class="mb-0 text-sm">Category</p>
+                                <a href="{{url("/category-page")}}"  class="mb-0 text-sm">Category</a>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
@@ -54,7 +54,7 @@
                                 <h5 class="mb-0 text-capitalize font-weight-bold">
                                     <span id="customer"></span>
                                 </h5>
-                                <p class="mb-0 text-sm">Customer</p>
+                                <a href="{{url("/customer-page")}}" class="mb-0 text-sm">Customer</a>
                             </div>
                         </div>
                         <div class="col-3 col-lg-4 col-md-4 col-sm-3 text-end">
