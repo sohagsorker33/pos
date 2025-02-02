@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
 
@@ -54,7 +54,9 @@ class ProductController extends Controller
 
 
      public function ProductList(Request $request){
-         
+       
+            
+
      }
 
 
@@ -63,7 +65,18 @@ class ProductController extends Controller
      } 
 
 
-     public function ProductDelete(Request $request){     
+     public function ProductDelete(Request $request){  
+      
+          $user_id=$request->header('id');
+
+           $product_id=$request->input('id');
+
+           $filePath=$request->input('file_path');
+
+           File::delete($filePath);
+
+           return Product::where('user_id','=',$user_id)->where('id','=',$product_id)->delete();
+      
      }
 
      public function ProductById(Request $request){
