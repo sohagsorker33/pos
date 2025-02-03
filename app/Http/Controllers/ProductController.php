@@ -73,6 +73,61 @@ class ProductController extends Controller
 
 
      public function ProductUpdate(Request $request){
+      
+      $user_id=$request->header('id');
+
+      $product_id=$request->input('id');
+
+      if($request->hasFile('image')){
+
+        // Upload new image File
+
+        $image=$request->file('image');
+
+        $time=time();
+
+        $file_name=$image->getClientOriginalName();
+
+        $image_name="{$user_id}-{$time}-{$file_name}";
+
+        $image_url="uploads/{$image_name}";
+
+        $image->move(public_path('uploads'),$image_name);
+
+        // Delete old image File
+
+        $filePath=$request->input('file_path');
+
+        File::delete($filePath);
+
+        return Product::where('user_id','=',$user_id)->where('id','=',$product_id)->update([
+
+           'name'=>$request->input('name'),
+
+           'price'=>$request->input('price'),
+
+           'unit'=>$request->input('unit'),
+
+           'image'=>$image_url,
+
+           'category_id'=>$request->input('category_id')
+
+        ]);
+
+      }else{
+          
+          return Product::where('user_id','=',$user_id)->where('id','=',$product_id)->update([
+
+             'name'=>$request->input('name'),
+
+             'price'=>$request->input('price'), 
+
+             'unit'=>$request->input('unit'),
+
+             'category_id'=>$request->input('category_id')
+          ]);
+
+      }
 
      } 
 
