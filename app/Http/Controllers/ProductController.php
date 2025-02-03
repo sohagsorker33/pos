@@ -65,7 +65,9 @@ class ProductController extends Controller
 
      public function ProductList(Request $request){
        
-            
+        $user_id=$request->header('id');
+        
+        return Product::where('user_id','=',$user_id)->get();
 
      }
 
