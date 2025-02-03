@@ -52,6 +52,16 @@ class ProductController extends Controller
 
      }
 
+     public function ProductById(Request $request){
+
+      $user_id=$request->header('id');
+
+      $product_id=$request->input('id') ;
+
+      return Product::where('user_id','=',$user_id)->where('id','=',$product_id)->first();
+      
+     }
+
 
      public function ProductList(Request $request){
        
@@ -79,9 +89,6 @@ class ProductController extends Controller
       
      }
 
-     public function ProductById(Request $request){
-         
-     }
-
+     
 
 }
