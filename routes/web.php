@@ -61,7 +61,7 @@ Route::get('/product-page',[ProductController::class, 'ProductPage'])->middlewar
 
 Route::get('/invoice-page',[InvoiceController::class, 'InvoicePage'])->middleware([TokenVerificationMiddleware::class]);
 
-
+Route::get('/seles-page',[InvoiceController::class, 'SelesPage'])->middleware([TokenVerificationMiddleware::class]);
 
 // Logout Route
 
