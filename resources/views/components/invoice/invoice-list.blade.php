@@ -71,7 +71,7 @@
     
         $('.viewBtn').on('click', async function () {
             let id= $(this).data('id');
-            let cus= $(this).data('cus');
+            let cus= $(this).data('customer');
             await InvoiceDetails(cus,id)
         })
     
